@@ -15,7 +15,7 @@ public class MovementInput : MonoBehaviour {
 	public float InputZ;
 	public Vector3 desiredMoveDirection;
 	public bool blockRotationPlayer;
-	public float desiredRotationSpeed = 0.1f;
+	public float desiredRotationSpeed = 0.005f;
 	public Animator anim;
 	public float Speed;
 	public float allowPlayerRotation = 0.1f;
@@ -23,7 +23,12 @@ public class MovementInput : MonoBehaviour {
 	public CharacterController controller;
 	public bool isGrounded;
 
-    [Header("Animation Smoothing")]
+	// Variables added for jumping
+	public Vector3 velocity;
+	public float gravity = -3000.0f;
+	public float jumpHeight = 3000.0f;
+
+	[Header("Animation Smoothing")]
     [Range(0, 1f)]
     public float HorizontalAnimSmoothTime = 0.2f;
     [Range(0, 1f)]
@@ -59,8 +64,16 @@ public class MovementInput : MonoBehaviour {
         moveVector = new Vector3(0, verticalVel * .2f * Time.deltaTime, 0);
         controller.Move(moveVector);
 
+		// Jumping
+		if (Input.GetButton("Jump") && isGrounded)
+		{
+			Debug.Log("Jump");
+			verticalVel = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+		}
 
-    }
+		verticalVel += gravity * Time.deltaTime;
+		// controller.Move(verticalVel * Time.deltaTime);
+	}
 
     void PlayerMoveAndRotation() {
 		InputX = Input.GetAxis ("Horizontal");
