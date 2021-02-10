@@ -321,6 +321,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1328772061}
     m_Modifications:
+    - target: {fileID: 915203734360578428, guid: 65b3f4be7db50d9458c63049fab05f47, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f7365bd2914e7c143990439ec86df324, type: 2}
     - target: {fileID: 1707858778801830057, guid: 65b3f4be7db50d9458c63049fab05f47, type: 3}
       propertyPath: m_Name
       value: RoomTile
@@ -504,6 +508,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1328772061}
     m_Modifications:
+    - target: {fileID: 5438436038497230541, guid: 7679ddb500cd27b41b0ca4f00bc245bd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f7365bd2914e7c143990439ec86df324, type: 2}
     - target: {fileID: 5798886668066946840, guid: 7679ddb500cd27b41b0ca4f00bc245bd, type: 3}
       propertyPath: m_Name
       value: IntersectionTile
@@ -628,6 +636,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1328772061}
     m_Modifications:
+    - target: {fileID: 915203734360578428, guid: 65b3f4be7db50d9458c63049fab05f47, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f7365bd2914e7c143990439ec86df324, type: 2}
     - target: {fileID: 1707858778801830057, guid: 65b3f4be7db50d9458c63049fab05f47, type: 3}
       propertyPath: m_Name
       value: RoomTile
@@ -743,5 +755,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: HallTile
       objectReference: {fileID: 0}
+    - target: {fileID: 8504834247583181420, guid: 548151cf79837f748b32d75fe0026916, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f7365bd2914e7c143990439ec86df324, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 548151cf79837f748b32d75fe0026916, type: 3}
