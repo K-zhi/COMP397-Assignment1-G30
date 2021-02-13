@@ -29,7 +29,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, groundMask);
 
-        if (isGrounded && velocity.y < 0)
+        if (isGrounded && velocity.y > 0)
         {
             velocity.y = -2.0f;
         }
