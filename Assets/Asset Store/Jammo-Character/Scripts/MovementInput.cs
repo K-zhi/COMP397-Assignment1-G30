@@ -77,6 +77,14 @@ public class MovementInput : MonoBehaviour
 		//controller.Move(verticalVel * Time.deltaTime);
 	}
 
+	void OnCollisionEnter(Collision collision)
+    {
+		if(collision.collider.tag == "Enemy")
+        {
+			Debug.Log("Game over");
+        }
+    }
+
 	void PlayerMoveAndRotation()
 	{
 		InputX = Input.GetAxis("Horizontal");
