@@ -25,8 +25,8 @@ public class MovementInput : MonoBehaviour
 
 	// Variables added for jumping
 	public Vector3 velocity;
-	public float gravity = -3000.0f;
-	public float jumpHeight = 3000.0f;
+	public float gravity = 0f;
+	public float jumpHeight = 0f;
 
 	[Header("Animation Smoothing")]
 	[Range(0, 1f)]
@@ -64,7 +64,7 @@ public class MovementInput : MonoBehaviour
 			verticalVel -= 1;
 		}
 		moveVector = new Vector3(0, verticalVel * .2f * Time.deltaTime, 0);
-		controller.Move(moveVector);
+		// controller.Move(moveVector);
 
 		// Jumping
 		if (Input.GetButton("Jump") && isGrounded)
@@ -105,7 +105,7 @@ public class MovementInput : MonoBehaviour
 		if (blockRotationPlayer == false)
 		{
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), desiredRotationSpeed);
-			controller.Move(desiredMoveDirection * Time.deltaTime * Velocity);
+			// controller.Move(desiredMoveDirection * Time.deltaTime * Velocity);
 		}
 	}
 
@@ -123,7 +123,7 @@ public class MovementInput : MonoBehaviour
 
 		desiredMoveDirection = forward;
 
-		t.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), desiredRotationSpeed);
+		// t.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), desiredRotationSpeed);
 	}
 
 	void InputMagnitude()
@@ -143,7 +143,7 @@ public class MovementInput : MonoBehaviour
 		if (Speed > allowPlayerRotation)
 		{
 			anim.SetFloat("Blend", Speed, StartAnimTime, Time.deltaTime);
-			PlayerMoveAndRotation();
+			// PlayerMoveAndRotation();
 		}
 		else if (Speed < allowPlayerRotation)
 		{
