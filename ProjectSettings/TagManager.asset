@@ -6,6 +6,8 @@ TagManager:
   tags:
   - PlayerEyes
   - Ground
+  - Enemy
+  - Trap
   layers:
   - Default
   - TransparentFX
@@ -13,8 +15,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
+  - Marker
+  - Enemy
   - 
   - 
   - 
