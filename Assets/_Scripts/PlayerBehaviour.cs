@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, groundMask);
 
-        if (isGrounded && velocity.y < 0)
+        if (isGrounded && velocity.y > 0)
         {
             velocity.y = -2.0f;
         }

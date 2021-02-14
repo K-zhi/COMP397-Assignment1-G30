@@ -7,6 +7,8 @@ TagManager:
   - PlayerEyes
   - Ground
   - Enemy
+  - Trap
+  - EnemyWeakness
   layers:
   - Default
   - TransparentFX
