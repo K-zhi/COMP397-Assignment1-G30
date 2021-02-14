@@ -9,6 +9,10 @@ TagManager:
   - Enemy
   - Trap
   - EnemyWeakness
+  - Chip
+  - Heart
+  - Battery
+  - Satellite
   layers:
   - Default
   - TransparentFX
