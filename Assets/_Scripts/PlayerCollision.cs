@@ -12,16 +12,22 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("EnemyWeakness"))
+        {
+            Debug.Log("Destroy enemy");
+            Destroy(other.transform.parent.gameObject);
+        }
         if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Collided with enemy");
             // SceneManager.LoadScene("Menu");
         }
-        if (other.gameObject.CompareTag("EnemyWeakness"))
+        if (other.gameObject.CompareTag("Trap"))
         {
-            Debug.Log("Destroy enemy");
-            Destroy(other.gameObject);
+            Debug.Log("Collided with trap");
+            // SceneManager.LoadScene("Menu");
         }
+        
         // Debug.Log("Collided with trigger");
 
     }
