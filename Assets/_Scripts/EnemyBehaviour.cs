@@ -1,3 +1,4 @@
+// this script should be added as a component on enemy objects
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

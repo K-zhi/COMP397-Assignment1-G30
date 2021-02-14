@@ -1,3 +1,5 @@
+// add as component for platforms that should move side to side
+// adjust rightLimit and leftLimit to adjust travel distance
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
