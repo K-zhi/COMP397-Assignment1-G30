@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Enemy
   - Trap
+  - EnemyWeakness
   layers:
   - Default
   - TransparentFX

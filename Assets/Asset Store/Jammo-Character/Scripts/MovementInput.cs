@@ -69,7 +69,6 @@ public class MovementInput : MonoBehaviour
 		// Jumping
 		if (Input.GetButton("Jump") && isGrounded)
 		{
-			Debug.Log("Jump");
 			verticalVel = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
 		}
 
