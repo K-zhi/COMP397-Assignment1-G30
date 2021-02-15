@@ -1,3 +1,6 @@
+// this script should be attached to the player character
+// this script controls movement and jumping
+// it does not control animations for character model -> that script is contained in the asset prefabs and has had its movement code removed
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

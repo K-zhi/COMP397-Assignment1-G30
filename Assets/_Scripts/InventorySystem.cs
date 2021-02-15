@@ -1,3 +1,4 @@
+// this script should be included as a component on the player object
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
