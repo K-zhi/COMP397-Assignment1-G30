@@ -1,11 +1,13 @@
+// add as component for platforms that should move up and down
+// adjust topLimit and bottomLimit to set lift height
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ElevatorPlatform : MonoBehaviour
 {
-    public float rightLimit = 1f;
-    public float leftLimit = -3f;
+    public float topLimit = 1f;
+    public float bottomLimit = -3f;
     public float speed = 2f;
     private int direction = 1;
     Vector3 movement;
@@ -14,11 +16,11 @@ public class ElevatorPlatform : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y > rightLimit)
+        if (transform.position.y > topLimit)
         {
             direction = -1;
         }
-        else if (transform.position.y < leftLimit)
+        else if (transform.position.y < bottomLimit)
         {
             direction = 1;
         }
