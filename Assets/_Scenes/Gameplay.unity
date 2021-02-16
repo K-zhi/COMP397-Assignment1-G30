@@ -2186,9 +2186,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1830885734}
     m_Modifications:
+    - target: {fileID: -4544064375797854377, guid: c0288c325b6deeb42b57a45a08881025, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4544064375797854377, guid: c0288c325b6deeb42b57a45a08881025, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 492254213302669109, guid: c0288c325b6deeb42b57a45a08881025, type: 3}
       propertyPath: m_Name
       value: MovingPlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 492254213302669109, guid: c0288c325b6deeb42b57a45a08881025, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 492254213302669109, guid: c0288c325b6deeb42b57a45a08881025, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8009,15 +8021,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 539745478100655087, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: -30.45
       objectReference: {fileID: 0}
     - target: {fileID: 539745478100655087, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 8.28
       objectReference: {fileID: 0}
     - target: {fileID: 539745478100655087, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.92
       objectReference: {fileID: 0}
     - target: {fileID: 539745478100655087, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       propertyPath: m_LocalRotation.w
