@@ -15,10 +15,24 @@ public class PlayerCollision : MonoBehaviour
     public float restartDelay = 2.0f;
     public GameObject gameOverScreen;
 
+    public AudioSource audio;
+    public AudioClip enemySquish;
+    public AudioClip enemyHit;
+    public AudioClip trapHit;
+    public AudioClip itemGet;
+    public AudioClip levelComplete;
+
+    private void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("EnemyWeakness"))
         {
+            audio.clip = enemySquish;
+            audio.Play();
             Debug.Log("Destroy enemy");
             Destroy(other.transform.parent.gameObject);
         }
@@ -28,6 +42,8 @@ public class PlayerCollision : MonoBehaviour
             // SceneManager.LoadScene("Menu");
             if(gameOver == false)
             {
+                audio.clip = enemyHit;
+                audio.Play();
                 gameOver = true;
                 GameOver();
                 Debug.Log("Collided with enemy");
@@ -36,6 +52,8 @@ public class PlayerCollision : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Trap"))
         {
+            audio.clip = trapHit;
+            audio.Play();
             gameOver = true;
             GameOver();
             Debug.Log("Collided with trap");
@@ -44,21 +62,29 @@ public class PlayerCollision : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Chip"))
         {
+            audio.clip = itemGet;
+            audio.Play();
             Debug.Log("Collided with chip");
             // future versions should add item to inventory
         }
         if (other.gameObject.CompareTag("Battery"))
         {
+            audio.clip = itemGet;
+            audio.Play();
             Debug.Log("Collided with battery");
             // future versions should add item to inventory
         }
         if (other.gameObject.CompareTag("Heart"))
         {
+            audio.clip = itemGet;
+            audio.Play();
             Debug.Log("Collided with heart");
             // future versions should restore a health point
         }
         if (other.gameObject.CompareTag("Satellite"))
         {
+            audio.clip = levelComplete;
+            audio.Play();
             Debug.Log("Collided with satellie");
             // future versions should allow player to complete the level
         }
