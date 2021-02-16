@@ -12,10 +12,9 @@ public class MovingPlatform : MonoBehaviour
     private int direction = 1;
     Vector3 movement;
 
-    // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame

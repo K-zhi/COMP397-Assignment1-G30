@@ -19,8 +19,8 @@ public class OptionMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioMixer.SetFloat("volume", -25.0f);
-        slider.value = -25.0f;
+        audioMixer.SetFloat("volume", -30.0f);
+        slider.value = -30.0f;
         leftInput.text = "A";
         rightInput.text = "D";
         forwardInput.text = "W";
