@@ -50,6 +50,13 @@ public class PlayerCollision : MonoBehaviour
             }
 
         }
+        /**
+        if (other.gameObject.CompareTag("MovingPlatform"))
+        {
+            Debug.Log("Collided with moving platform");
+            transform.parent = other.transform;
+        }
+        */
         if (other.gameObject.CompareTag("Trap"))
         {
             audio.clip = trapHit;

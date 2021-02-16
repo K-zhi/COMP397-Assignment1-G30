@@ -15,11 +15,10 @@ public class MovingPlatform : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
-
     void Update()
     {
         if (transform.position.z > rightLimit)
@@ -34,3 +33,5 @@ public class MovingPlatform : MonoBehaviour
         transform.Translate(movement);
     }
 }
+
+
