@@ -11,6 +11,9 @@ public class PlayerCollision : MonoBehaviour
     public Text LogCollsiionEnter;
     public Text LogCollisionStay;
     public Text LogCollisionExit;
+    public bool gameOver = false;
+    public float restartDelay = 2.0f;
+    public GameObject gameOverScreen;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,12 +24,20 @@ public class PlayerCollision : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Collided with enemy");
             // future versions should remove a health point
             // SceneManager.LoadScene("Menu");
+            if(gameOver == false)
+            {
+                gameOver = true;
+                GameOver();
+                Debug.Log("Collided with enemy");
+            }
+
         }
         if (other.gameObject.CompareTag("Trap"))
         {
+            gameOver = true;
+            GameOver();
             Debug.Log("Collided with trap");
             // future versions should remove a health point
             // SceneManager.LoadScene("Menu");
@@ -52,7 +63,14 @@ public class PlayerCollision : MonoBehaviour
             // future versions should allow player to complete the level
         }
         // Debug.Log("Collided with trigger");
-
     }
 
+    void GameOver()
+    {
+        Invoke("Restart", restartDelay);
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        gameOverScreen.SetActive(true);
+    }
 }
