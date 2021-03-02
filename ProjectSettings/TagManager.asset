@@ -15,6 +15,7 @@ TagManager:
   - Satellite
   - MovingPlatform
   - TrapBase
+  - Slot
   layers:
   - Default
   - TransparentFX

@@ -30,6 +30,8 @@ public class PlayerCollision : MonoBehaviour
     public AudioClip levelComplete;
     public AudioClip gameOver;
 
+    public InventorySystem inventory;
+
     private void Start()
     {
         health = MAX_HEALTH;
@@ -106,6 +108,8 @@ public class PlayerCollision : MonoBehaviour
         {
             audio.clip = itemGet;
             audio.Play();
+            inventory.refreshInventory(other.gameObject);
+            Destroy(other.gameObject);
             Debug.Log("Collided with chip");
             // future versions should add item to inventory
         }
@@ -113,6 +117,8 @@ public class PlayerCollision : MonoBehaviour
         {
             audio.clip = itemGet;
             audio.Play();
+            inventory.refreshInventory(other.gameObject);
+            Destroy(other.gameObject);
             Debug.Log("Collided with battery");
             // future versions should add item to inventory
         }
@@ -120,6 +126,8 @@ public class PlayerCollision : MonoBehaviour
         {
             audio.clip = itemGet;
             audio.Play();
+            inventory.refreshInventory(other.gameObject);
+            Destroy(other.gameObject);
             Debug.Log("Collided with heart");
             // future versions should restore a health point
         }
