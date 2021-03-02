@@ -13,6 +13,8 @@ TagManager:
   - Heart
   - Battery
   - Satellite
+  - MovingPlatform
+  - TrapBase
   layers:
   - Default
   - TransparentFX
@@ -22,8 +24,8 @@ TagManager:
   - UI
   - Marker
   - Enemy
-  - 
-  - 
+  - MovingPlatform
+  - TrapBase
   - 
   - 
   - 
