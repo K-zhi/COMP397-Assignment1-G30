@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 548749046}
   - component: {fileID: 548749045}
   - component: {fileID: 548749044}
+  - component: {fileID: 406130634}
   m_Layer: 7
   m_Name: WeaknessCollider
   m_TagString: EnemyWeakness
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548749042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.88, z: -0.098}
+  m_LocalPosition: {x: 0, y: 0.88, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children: []
   m_Father: {fileID: 4023215848608658}
@@ -94,6 +95,19 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.35
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &406130634
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548749042}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.3, y: 0.1, z: 2.3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1063458555033194
 GameObject:
@@ -290,6 +304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4409866491529092}
   - component: {fileID: 2103447517}
+  - component: {fileID: 2103447518}
   m_Layer: 7
   m_Name: Body
   m_TagString: Enemy
@@ -321,10 +336,23 @@ CapsuleCollider:
   m_GameObject: {fileID: 1463649340635624}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.6
   m_Height: 1
   m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &2103447518
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463649340635624}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1, y: 1.1, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1503310629534036
 GameObject:
@@ -493,6 +521,7 @@ GameObject:
   - component: {fileID: 4023215848608658}
   - component: {fileID: 95161444847813696}
   - component: {fileID: 204157571}
+  - component: {fileID: 204157573}
   - component: {fileID: 204157570}
   - component: {fileID: 204157572}
   m_Layer: 7
@@ -552,6 +581,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: -1
   m_Mesh: {fileID: 0}
+--- !u!65 &204157573
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919012471076396}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &204157570
 MonoBehaviour:
   m_ObjectHideFlags: 0
