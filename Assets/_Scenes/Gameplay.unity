@@ -3794,10 +3794,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f6deddf10ff844bb0c14bc19bacb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   LogCollsiionEnter: {fileID: 0}
   LogCollisionStay: {fileID: 0}
   LogCollisionExit: {fileID: 0}
-  gameOver: 0
   restartDelay: 1
   gameOverScreen: {fileID: 1007456892}
   audio: {fileID: 794044543}
@@ -3806,6 +3806,7 @@ MonoBehaviour:
   trapHit: {fileID: 8300000, guid: 900a398e67bc10048bdba7b6816a6e2a, type: 3}
   itemGet: {fileID: 8300000, guid: e468ef6de2b28ac48899e582fd3084dc, type: 3}
   levelComplete: {fileID: 8300000, guid: a45339362ec64294fabf7e4d24c408d1, type: 3}
+  gameOver: {fileID: 8300000, guid: 7e8fa89919521d84b8180dc811d7c545, type: 3}
 --- !u!114 &794044541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4050,7 +4051,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000013667988280, guid: 677e3f20f0ab76a45bd59d5b73b0b446, type: 3}
       propertyPath: m_Name
-      value: HeartContainer (2)
+      value: HeartContainer3
       objectReference: {fileID: 0}
     - target: {fileID: 224000013332938072, guid: 677e3f20f0ab76a45bd59d5b73b0b446, type: 3}
       propertyPath: m_Pivot.x
@@ -8366,7 +8367,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000013667988280, guid: 677e3f20f0ab76a45bd59d5b73b0b446, type: 3}
       propertyPath: m_Name
-      value: HeartContainer
+      value: HeartContainer1
       objectReference: {fileID: 0}
     - target: {fileID: 224000013332938072, guid: 677e3f20f0ab76a45bd59d5b73b0b446, type: 3}
       propertyPath: m_Pivot.x
@@ -9208,7 +9209,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000013667988280, guid: 677e3f20f0ab76a45bd59d5b73b0b446, type: 3}
       propertyPath: m_Name
-      value: HeartContainer (1)
+      value: HeartContainer2
       objectReference: {fileID: 0}
     - target: {fileID: 224000013332938072, guid: 677e3f20f0ab76a45bd59d5b73b0b446, type: 3}
       propertyPath: m_Pivot.x
