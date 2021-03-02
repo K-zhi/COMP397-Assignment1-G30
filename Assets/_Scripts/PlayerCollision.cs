@@ -46,7 +46,10 @@ public class PlayerCollision : MonoBehaviour
             audio.clip = enemySquish;
             audio.Play();
             Debug.Log("Destroy enemy");
-            Destroy(other.transform.parent.gameObject);
+            other.gameObject.transform.parent.GetComponent<SlimeBehaviour>().SetDead();
+            other.gameObject.transform.parent.GetComponent<BoxCollider>().enabled = false;
+            other.gameObject.transform.parent.GetComponent("Body").GetComponent<BoxCollider>().enabled = false;
+            // Destroy(other.transform.parent.gameObject);
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
