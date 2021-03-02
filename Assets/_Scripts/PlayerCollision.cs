@@ -40,15 +40,14 @@ public class PlayerCollision : MonoBehaviour
         {
             // future versions should remove a health point
             // SceneManager.LoadScene("Menu");
-            if(gameOver == false)
+             if(gameOver == false)
             {
                 audio.clip = enemyHit;
                 audio.Play();
-                gameOver = true;
-                GameOver();
+                // gameOver = true;
+                // GameOver();
                 Debug.Log("Collided with enemy");
             }
-
         }
         /**
         if (other.gameObject.CompareTag("MovingPlatform"))
