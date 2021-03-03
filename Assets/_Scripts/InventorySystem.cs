@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class InventorySystem : MonoBehaviour
 {
-    public static bool inventory = true;
+    public static bool inventory = false;
     public GameObject inventorySys;
     public Transform panel;
     public List<Transform> heartItemIcons;
@@ -35,14 +35,39 @@ public class InventorySystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             showHideInventory();
-
         }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            useInventoryItem();
+        }
+    }
+
+    void OnMouseOver()
+    {
+        Debug.Log("mouse over triggered");
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void showHideInventory()
     {
         inventory = !inventory;
         inventorySys.SetActive(inventory);
+        if (inventory)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
+
+    public void useInventoryItem()
+    {
+        Debug.Log("Item used");
     }
 
     public void refreshInventory(GameObject item)
