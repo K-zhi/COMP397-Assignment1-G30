@@ -11,12 +11,18 @@ public class InventorySystem : MonoBehaviour
     public static bool inventory = false;
     public GameObject inventorySys;
     public Transform panel;
+
+    [Header("Inventory Items")]
     public List<Transform> heartItemIcons;
     public List<Transform> batteryItemIcons;
     public List<Transform> chipItemIcons;
 
     public GameObject[] goArraySlot;
     public GameObject[] slot;
+
+    public int health;
+
+    private PlayerCollision playerCollision;
 
     // Start is called before the first frame update
     void Start()
@@ -36,17 +42,6 @@ public class InventorySystem : MonoBehaviour
         {
             showHideInventory();
         }
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            useInventoryItem();
-        }
-    }
-
-    void OnMouseOver()
-    {
-        Debug.Log("mouse over triggered");
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
     }
 
     public void showHideInventory()
@@ -65,9 +60,33 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
-    public void useInventoryItem()
+    public void useInventoryItem(GameObject item)
     {
-        Debug.Log("Item used");
+        playerCollision = GameObject.FindObjectOfType<PlayerCollision>();
+        Debug.Log(playerCollision);
+        /**
+        //health = GameObject.Find("Jammo_Player").GetComponent<PlayerCollision>().getHealth();
+        if (item.tag.Equals("Heart"))
+        {
+            //Debug.Log("Current health: " + collisionComponent.getHealth());
+
+            switch (GameObject.Find("Jammo_Player").GetComponent<PlayerCollision>().getHealth())
+            {
+                case 0:
+                    GameObject.Find("Jammo_Player").GetComponent<PlayerCollision>().setHealth(1);
+                    break;
+                case 1:
+                    GameObject.Find("Jammo_Player").GetComponent<PlayerCollision>().setHealth(2);
+                    break;
+                case 2:
+                    GameObject.Find("Jammo_Player").GetComponent<PlayerCollision>().setHealth(3);
+                    break;
+                default:
+                    break;
+            }
+            GameObject.Find("Jammo_Player").GetComponent<PlayerCollision>().UpdateHealth();
+        }
+        */
     }
 
     public void refreshInventory(GameObject item)

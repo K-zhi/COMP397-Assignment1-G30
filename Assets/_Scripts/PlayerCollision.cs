@@ -12,15 +12,18 @@ public class PlayerCollision : MonoBehaviour
     private GameObject heart1;
     private GameObject heart2;
     private GameObject heart3;
-    public int health;
+    private int health;
     private const int MAX_HEALTH = 3;
+
     [Header("Logs")]
     public Text LogCollsiionEnter;
     public Text LogCollisionStay;
     public Text LogCollisionExit;
+    
     [Header("Game Over")]
     public float restartDelay = 2.0f;
     public GameObject gameOverScreen;
+    
     [Header("Audio")]
     public AudioSource audio;
     public AudioClip enemySquish;
@@ -32,6 +35,15 @@ public class PlayerCollision : MonoBehaviour
 
     public InventorySystem inventory;
 
+    public void setHealth(int newHealth)
+    {
+        health = newHealth;
+    }
+    public int getHealth()
+    {
+        return health;
+    }
+    
     private void Start()
     {
         health = MAX_HEALTH;
@@ -50,7 +62,7 @@ public class PlayerCollision : MonoBehaviour
             Debug.Log("Destroy enemy");
             other.gameObject.transform.parent.GetComponent<SlimeBehaviour>().SetDead();
             other.gameObject.transform.parent.GetComponent<BoxCollider>().enabled = false;
-            other.gameObject.transform.parent.GetComponent("Body").GetComponent<BoxCollider>().enabled = false;
+            other.gameObject.transform.parent.Find("Body").GetComponent<BoxCollider>().enabled = false;
             // Destroy(other.transform.parent.gameObject);
         }
         if (other.gameObject.CompareTag("Enemy"))
@@ -148,5 +160,32 @@ public class PlayerCollision : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         gameOverScreen.SetActive(true);
+    }
+
+    public void UpdateHealth()
+    {
+        switch (health)
+        {
+            case 0:
+                heart1.SetActive(false);
+                heart2.SetActive(false);
+                heart3.SetActive(false);
+                break;
+            case 1:
+                heart1.SetActive(true);
+                heart2.SetActive(false);
+                heart3.SetActive(false);
+                break;
+            case 2:
+                heart1.SetActive(true);
+                heart2.SetActive(true);
+                heart3.SetActive(false);
+                break;
+            case 3:
+                heart1.SetActive(true);
+                heart2.SetActive(true);
+                heart3.SetActive(true);
+                break;
+        }
     }
 }
