@@ -1,5 +1,6 @@
 // this script should be used as a component for the player object
 // it detects the tag of colliders and responds accordingly
+using Assets._Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,7 +34,18 @@ public class PlayerCollision : MonoBehaviour
     public AudioClip levelComplete;
     public AudioClip gameOver;
 
-    public InventorySystem inventory;
+    [Header("Items")]
+    private ItemBehaviour itemBehaviour;
+    private GameObject heartSlot1;
+    private GameObject heartSlot2;
+    private GameObject heartSlot3;
+    private GameObject batterySlot1;
+    private GameObject batterySlot2;
+    private GameObject batterySlot3;
+    private GameObject chipSlot1;
+    private GameObject chipSlot2;
+    private GameObject chipSlot3;
+
 
     public void setHealth(int newHealth)
     {
@@ -51,6 +63,18 @@ public class PlayerCollision : MonoBehaviour
         heart2 = GameObject.Find("Canvas/Hearts/HeartContainer2");
         heart3 = GameObject.Find("Canvas/Hearts/HeartContainer3");
         audio = GetComponent<AudioSource>();
+        itemBehaviour = new ItemBehaviour();
+
+        // find inventory slots
+        heartSlot1 = GameObject.Find("HeartSlot1");
+        heartSlot2 = GameObject.Find("HeartSlot2");
+        heartSlot3 = GameObject.Find("HeartSlot3");
+        batterySlot1 = GameObject.Find("BatterySlot1");
+        batterySlot2 = GameObject.Find("BatterySlot2");
+        batterySlot3 = GameObject.Find("BatterySlot3");
+        chipSlot1 = GameObject.Find("ChipSlot1");
+        chipSlot2 = GameObject.Find("ChipSlot2");
+        chipSlot3 = GameObject.Find("ChipSlot3");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,7 +87,6 @@ public class PlayerCollision : MonoBehaviour
             other.gameObject.transform.parent.GetComponent<SlimeBehaviour>().SetDead();
             other.gameObject.transform.parent.GetComponent<BoxCollider>().enabled = false;
             other.gameObject.transform.parent.Find("Body").GetComponent<BoxCollider>().enabled = false;
-            // Destroy(other.transform.parent.gameObject);
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
@@ -87,13 +110,6 @@ public class PlayerCollision : MonoBehaviour
                 Debug.Log("Collided with enemy");
             }
         }
-        /**
-        if (other.gameObject.CompareTag("MovingPlatform"))
-        {
-            Debug.Log("Collided with moving platform");
-            transform.parent = other.transform;
-        }
-        */
         if (other.gameObject.CompareTag("Trap"))
         {
             health -= 1;
@@ -120,28 +136,57 @@ public class PlayerCollision : MonoBehaviour
         {
             audio.clip = itemGet;
             audio.Play();
-            inventory.refreshInventory(other.gameObject);
+            // To Do: enable chip collected icon in UI
             Destroy(other.gameObject);
             Debug.Log("Collided with chip");
-            // future versions should add item to inventory
+
+            // add chip to inventory
+            if (!chipSlot1.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.activeSelf)
+                chipSlot1.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.SetActive(true);
+            else
+            {
+                if (!chipSlot2.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.activeSelf)
+                    chipSlot2.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.SetActive(true);
+                else
+                    chipSlot3.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.SetActive(true);
+            }
         }
         if (other.gameObject.CompareTag("Battery"))
         {
             audio.clip = itemGet;
             audio.Play();
-            inventory.refreshInventory(other.gameObject);
+            // To Do: enable battery collected icon in UI
             Destroy(other.gameObject);
             Debug.Log("Collided with battery");
-            // future versions should add item to inventory
+
+            // add battery to inventory
+            if (!batterySlot1.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.activeSelf)
+                batterySlot1.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.SetActive(true);
+            else
+            {
+                if (!batterySlot2.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.activeSelf)
+                    batterySlot2.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.SetActive(true);
+                else
+                    batterySlot3.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.SetActive(true);
+            }
         }
         if (other.gameObject.CompareTag("Heart"))
         {
             audio.clip = itemGet;
             audio.Play();
-            inventory.refreshInventory(other.gameObject);
             Destroy(other.gameObject);
             Debug.Log("Collided with heart");
-            // future versions should restore a health point
+            
+            // add heart to inventory
+            if (!heartSlot1.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.activeSelf)
+                heartSlot1.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.SetActive(true);
+            else
+            {
+                if (!heartSlot2.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.activeSelf)
+                    heartSlot2.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.SetActive(true);
+                else
+                    heartSlot3.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.SetActive(true);
+            }
         }
         if (other.gameObject.CompareTag("Satellite"))
         {
