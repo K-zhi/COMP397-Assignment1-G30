@@ -1,19 +1,16 @@
 // this script should be included as a component on the player object
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class InventorySystem : MonoBehaviour
 {
-    public static bool inventory = true;
+    public static bool inventory = false;
     public GameObject inventorySys;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform panel;
 
     // Update is called once per frame
     void Update()
@@ -26,8 +23,17 @@ public class InventorySystem : MonoBehaviour
 
     public void showHideInventory()
     {
-        inventory =! inventory;
+        inventory = !inventory;
         inventorySys.SetActive(inventory);
+        if (inventory)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
-
 }
