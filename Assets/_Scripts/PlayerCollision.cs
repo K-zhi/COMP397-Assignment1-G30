@@ -48,7 +48,7 @@ public class PlayerCollision : MonoBehaviour
             Debug.Log("Destroy enemy");
             other.gameObject.transform.parent.GetComponent<SlimeBehaviour>().SetDead();
             other.gameObject.transform.parent.GetComponent<BoxCollider>().enabled = false;
-            other.gameObject.transform.parent.GetComponent("Body").GetComponent<BoxCollider>().enabled = false;
+            other.gameObject.transform.parent.Find("Body").GetComponent<BoxCollider>().enabled = false;
             // Destroy(other.transform.parent.gameObject);
         }
         if (other.gameObject.CompareTag("Enemy"))
