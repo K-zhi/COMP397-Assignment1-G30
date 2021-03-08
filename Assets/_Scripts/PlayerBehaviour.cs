@@ -17,20 +17,33 @@ public class PlayerBehaviour : MonoBehaviour
 
     public CharacterController controller;
 
+    [Header("Movement")]
     public float maxSpeed = 10.0f;
     public float gravity = -30.0f;
     public float jumpHeight = 3.0f;
+    public Vector3 velocity;
 
+    [Header("Ground")]
     public Transform groundCheck;
     public float groundRadius = 0.5f;
     public LayerMask groundMask;
-
-    public Vector3 velocity;
     public bool isGrounded;
+
+    [Header("Animations")]
+    public Animator anim;
+
+    [Header("Items")]
+    public static bool hasSuperJump;
+    public float superJumpMultiplier = 3.0f;
+    public static bool hasSuperSpeed;
+    public static float superSpeedMultiplier = 2.0f;
+    public static int superSpeedDuration = 3000;
+    public static float currSpeedMultiplier = 1.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = this.GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
         //loadCurrentMovementOptions();
     }
@@ -47,32 +60,29 @@ public class PlayerBehaviour : MonoBehaviour
         }
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        /**
-        if (Input.GetKeyDown(leftKey))
-            x = -1;
-        else if (Input.GetKeyDown(rightKey))
-            x = 1;
-        else
-            x = 0;
-        if (Input.GetKeyDown(upKey))
-            z = 1;
-        else if (Input.GetKeyDown(downKey))
-            z = -1;
-        else
-            z = 0;
-        Debug.Log("x: " + x);
-        Debug.Log("z: " + z);
-        **/
 
-        Vector3 move = transform.right * x + transform.forward * z;
-        Debug.Log("transform right: " + transform.right);
-        Debug.Log("trasform forwad: " + transform.forward);
+        if (x != 0 || z != 0)
+            anim.SetBool("isRunning", true);
+        else
+            anim.SetBool("isRunning", false);
+
+        Vector3 move = transform.right * x * currSpeedMultiplier + transform.forward * z * currSpeedMultiplier;
 
         controller.Move(move * maxSpeed * Time.deltaTime);
 
         if (Input.GetButton("Jump") && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+            if (hasSuperJump)
+            {
+                Debug.Log("Super Jumping");
+                velocity.y = Mathf.Sqrt(jumpHeight * superJumpMultiplier * -2.0f * gravity);
+                hasSuperJump = false;
+            }
+            else
+            {
+                Debug.Log("Jumping");
+                velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+            }
         }
 
         velocity.y += gravity * Time.deltaTime;
