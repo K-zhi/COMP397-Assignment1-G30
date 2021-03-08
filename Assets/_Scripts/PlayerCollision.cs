@@ -75,6 +75,17 @@ public class PlayerCollision : MonoBehaviour
         chipSlot1 = GameObject.Find("ChipSlot1");
         chipSlot2 = GameObject.Find("ChipSlot2");
         chipSlot3 = GameObject.Find("ChipSlot3");
+        /*
+        heartSlot1 = GameObject.Find("Canvas/Inventory/ItemParent/HeartSlot1");
+        heartSlot2 = GameObject.Find("Canvas/Inventory/ItemParent/HeartSlot2");
+        heartSlot3 = GameObject.Find("Canvas/Inventory/ItemParent/HeartSlot3");
+        batterySlot1 = GameObject.Find("Canvas/Inventory/ItemParent/BatterySlot1");
+        batterySlot2 = GameObject.Find("Canvas/Inventory/ItemParent/BatterySlot2");
+        batterySlot3 = GameObject.Find("Canvas/Inventory/ItemParent/BatterySlot3");
+        chipSlot1 = GameObject.Find("Canvas/Inventory/ItemParent/ChipSlot1");
+        chipSlot2 = GameObject.Find("Canvas/Inventory/ItemParent/ChipSlot2");
+        chipSlot3 = GameObject.Find("Canvas/Inventory/ItemParent/ChipSlot3");
+        */
     }
 
     private void OnTriggerEnter(Collider other)
@@ -176,6 +187,9 @@ public class PlayerCollision : MonoBehaviour
             audio.Play();
             Destroy(other.gameObject);
             Debug.Log("Collided with heart");
+
+            if (heartSlot1 == null)
+                Debug.Log("heart slot 1 is null");
             
             // add heart to inventory
             if (!heartSlot1.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.activeSelf)

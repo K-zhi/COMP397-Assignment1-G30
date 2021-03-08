@@ -8,9 +8,17 @@ using UnityEngine.UI;
 
 public class InventorySystem : MonoBehaviour
 {
-    public static bool inventory = false;
+    public static bool inventory = true;
     public GameObject inventorySys;
     public Transform panel;
+
+    private void Start()
+    {
+        inventory = !inventory;
+        inventorySys.SetActive(inventory);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     // Update is called once per frame
     void Update()

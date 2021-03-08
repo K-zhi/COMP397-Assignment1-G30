@@ -8,6 +8,13 @@ using UnityEngine.Audio;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    [Header("Movement Input Options")]
+    public MovementOptionSO curreMovementOptions;
+    public KeyCode upKey;
+    public KeyCode downKey;
+    public KeyCode rightKey;
+    public KeyCode leftKey;
+
     public CharacterController controller;
 
     [Header("Movement")]
@@ -38,6 +45,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         anim = this.GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
+        //loadCurrentMovementOptions();
     }
 
     // Update is called once per frame - once every 16.6666ms
@@ -50,7 +58,6 @@ public class PlayerBehaviour : MonoBehaviour
         {
             velocity.y = -2.0f;
         }
-
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -83,11 +90,18 @@ public class PlayerBehaviour : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
+    public void loadCurrentMovementOptions()
+    {
+
+        upKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), curreMovementOptions.upKey.name);
+        downKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), curreMovementOptions.downKey.name);
+        rightKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), curreMovementOptions.rightKey.name);
+        leftKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), curreMovementOptions.leftkey.name);
+    }
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
     }
-
-
 }
