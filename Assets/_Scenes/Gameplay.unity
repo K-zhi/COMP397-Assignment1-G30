@@ -4702,13 +4702,14 @@ MonoBehaviour:
   maxSpeed: 10
   gravity: -100
   jumpHeight: 2
+  velocity: {x: 0, y: 0, z: 0}
   groundCheck: {fileID: 761612826}
   groundRadius: 0.5
   groundMask:
     serializedVersion: 2
     m_Bits: 8
-  velocity: {x: 0, y: 0, z: 0}
   isGrounded: 0
+  anim: {fileID: 0}
 --- !u!136 &794044542
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9554,7 +9555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4757836856755875626, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4757836856755875626, guid: bd6ee82c5e06b3f4f86113cbf8261ae1, type: 3}
       propertyPath: jumpHeight
