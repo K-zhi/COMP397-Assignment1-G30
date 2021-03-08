@@ -25,6 +25,11 @@ public class PlayerBehaviour : MonoBehaviour
     [Header("Animations")]
     public Animator anim;
 
+    [Header("Items")]
+    public static bool hasSuperJump;
+    public float superJumpMultiplier = 3;
+    public static bool hasSuperSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +45,6 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (isGrounded && velocity.y > 0)
         {
-            anim.SetBool("isJumping", false);
             velocity.y = -2.0f;
         }
 
@@ -58,8 +62,17 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (Input.GetButton("Jump") && isGrounded)
         {
-            anim.SetBool("isJumping", true);
-            velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+            if (hasSuperJump)
+            {
+                Debug.Log("Super Jumping");
+                velocity.y = Mathf.Sqrt(jumpHeight * superJumpMultiplier * -2.0f * gravity);
+                hasSuperJump = false;
+            }
+            else
+            {
+                Debug.Log("Jumping");
+                velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+            }
         }
 
         velocity.y += gravity * Time.deltaTime;

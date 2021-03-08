@@ -46,7 +46,12 @@ namespace Assets._Scripts
             // using chip
             if (itemSlot.tag == "Chip")
             {
-                itemIcon.SetActive(false);
+                if (!PlayerBehaviour.hasSuperJump)
+                {
+                    PlayerBehaviour.hasSuperJump = true;
+                    Debug.Log("Has super jump: " + PlayerBehaviour.hasSuperJump);
+                    itemIcon.SetActive(false);
+                }
             }
         }
     }
