@@ -49,7 +49,6 @@ public class PlayerCollision : MonoBehaviour
     private GameObject chipSlot2;
     private GameObject chipSlot3;
 
-
     public void setHealth(int newHealth)
     {
         health = newHealth;
@@ -58,7 +57,6 @@ public class PlayerCollision : MonoBehaviour
     {
         return health;
     }
-    
     private void Start()
     {
         health = MAX_HEALTH;
@@ -247,5 +245,19 @@ public class PlayerCollision : MonoBehaviour
                 heart3.SetActive(true);
                 break;
         }
+    }
+
+    public void SavePlayer()
+    {
+        SaveSystem.SavePlayer(this);
+        Debug.Log("Saved");
+    }
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        health = data.health;
+        UpdateHealth();
+        Debug.Log("Loaded");
     }
 }
