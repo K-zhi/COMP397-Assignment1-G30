@@ -24,7 +24,10 @@ public class PlayerCollision : MonoBehaviour
     [Header("Game Over")]
     public float restartDelay = 2.0f;
     public GameObject gameOverScreen;
-    
+
+    [Header("Level Complete")]
+    public GameObject victoryScreen;
+
     [Header("Audio")]
     public AudioSource audio;
     public AudioClip enemySquish;
@@ -75,17 +78,6 @@ public class PlayerCollision : MonoBehaviour
         chipSlot1 = GameObject.Find("ChipSlot1");
         chipSlot2 = GameObject.Find("ChipSlot2");
         chipSlot3 = GameObject.Find("ChipSlot3");
-        /*
-        heartSlot1 = GameObject.Find("Canvas/Inventory/ItemParent/HeartSlot1");
-        heartSlot2 = GameObject.Find("Canvas/Inventory/ItemParent/HeartSlot2");
-        heartSlot3 = GameObject.Find("Canvas/Inventory/ItemParent/HeartSlot3");
-        batterySlot1 = GameObject.Find("Canvas/Inventory/ItemParent/BatterySlot1");
-        batterySlot2 = GameObject.Find("Canvas/Inventory/ItemParent/BatterySlot2");
-        batterySlot3 = GameObject.Find("Canvas/Inventory/ItemParent/BatterySlot3");
-        chipSlot1 = GameObject.Find("Canvas/Inventory/ItemParent/ChipSlot1");
-        chipSlot2 = GameObject.Find("Canvas/Inventory/ItemParent/ChipSlot2");
-        chipSlot3 = GameObject.Find("Canvas/Inventory/ItemParent/ChipSlot3");
-        */
     }
 
     private void OnTriggerEnter(Collider other)
@@ -104,9 +96,6 @@ public class PlayerCollision : MonoBehaviour
             health -= 1;
             if (health == 0)
             {
-                heart1.SetActive(false);
-                audio.clip = gameOver;
-                audio.Play();
                 GameOver();
                 Debug.Log("Collided with enemy");
             }
@@ -126,9 +115,6 @@ public class PlayerCollision : MonoBehaviour
             health -= 1;
             if (health == 0)
             {
-                heart1.SetActive(false);
-                audio.clip = gameOver;
-                audio.Play();
                 GameOver();
                 Debug.Log("Collided with enemy");
             }
@@ -145,6 +131,7 @@ public class PlayerCollision : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Chip"))
         {
+            GameObject.Find("ChipImage").GetComponent<Image>().enabled = true;
             audio.clip = itemGet;
             audio.Play();
             // To Do: enable chip collected icon in UI
@@ -164,6 +151,7 @@ public class PlayerCollision : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Battery"))
         {
+            GameObject.Find("BatteryImage").GetComponent<Image>().enabled = true;
             audio.clip = itemGet;
             audio.Play();
             // To Do: enable battery collected icon in UI
@@ -204,21 +192,34 @@ public class PlayerCollision : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Satellite"))
         {
-            audio.clip = levelComplete;
-            audio.Play();
             Debug.Log("Collided with satellie");
-            // future versions should allow player to complete the level
+            Victory();
         }
-        // Debug.Log("Collided with trigger");
     }
 
-    void GameOver()
+    public void GameOver()
     {
+        heart1.SetActive(false);
+        heart2.SetActive(false);
+        heart3.SetActive(false);
+        audio.clip = gameOver;
+        audio.Play();
         Invoke("Restart", restartDelay);
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         gameOverScreen.SetActive(true);
+    }
+
+    public void Victory()
+    {
+        audio.clip = levelComplete;
+        audio.Play();
+        Invoke("Restart", restartDelay);
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        victoryScreen.SetActive(true);
     }
 
     public void UpdateHealth()
