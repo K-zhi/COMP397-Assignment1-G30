@@ -27,8 +27,11 @@ public class PlayerBehaviour : MonoBehaviour
 
     [Header("Items")]
     public static bool hasSuperJump;
-    public float superJumpMultiplier = 3;
+    public float superJumpMultiplier = 3.0f;
     public static bool hasSuperSpeed;
+    public static float superSpeedMultiplier = 2.0f;
+    public static int superSpeedDuration = 3000;
+    public static float currSpeedMultiplier = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -51,12 +54,12 @@ public class PlayerBehaviour : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        if (x > 0 || z > 0)
+        if (x != 0 || z != 0)
             anim.SetBool("isRunning", true);
         else
             anim.SetBool("isRunning", false);
 
-        Vector3 move = transform.right * x + transform.forward * z;
+        Vector3 move = transform.right * x * currSpeedMultiplier + transform.forward * z * currSpeedMultiplier;
 
         controller.Move(move * maxSpeed * Time.deltaTime);
 
