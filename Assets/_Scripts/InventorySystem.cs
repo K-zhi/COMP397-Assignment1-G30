@@ -11,6 +11,7 @@ public class InventorySystem : MonoBehaviour
     public static bool inventory = true;
     public GameObject inventorySys;
     public Transform panel;
+    public CameraController playerCamera;
 
     private void Start()
     {
@@ -35,11 +36,13 @@ public class InventorySystem : MonoBehaviour
         inventorySys.SetActive(inventory);
         if (inventory)
         {
+            playerCamera.enabled = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
         else
         {
+            playerCamera.enabled = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }

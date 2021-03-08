@@ -12,7 +12,6 @@ public class KeyMappingController : MonoBehaviour
     public Dropdown downButtonDropdownOtions;
     public Dropdown rightButtonDropdownOtions;
     public Dropdown leftButtonDropdownOtions;
-    public Dropdown jumpButtonDropDownOptions;
 
     public PlayerBehaviour player;
 
