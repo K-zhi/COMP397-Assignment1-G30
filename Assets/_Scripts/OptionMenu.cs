@@ -19,7 +19,6 @@ public class OptionMenu : MonoBehaviour
     public void SetVolume(float vol)
     {
         audioMixer.SetFloat("volume", vol);
+        Debug.Log("chanegd volume:"+vol);
     }
-
-
 }
