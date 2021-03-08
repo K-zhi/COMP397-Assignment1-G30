@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -40,14 +41,44 @@ namespace Assets._Scripts
             // using battery
             if (itemSlot.tag == "Battery")
             {
-                itemIcon.SetActive(false);
+                if (!PlayerBehaviour.hasSuperSpeed)
+                {
+                    GiveSuperSpeed();
+                    Debug.Log("Has super jump: " + PlayerBehaviour.hasSuperJump);
+                    itemIcon.SetActive(false);
+                }
+                else
+                {
+                    Debug.Log("Player already has super speed");
+                }
             }
 
             // using chip
             if (itemSlot.tag == "Chip")
             {
-                itemIcon.SetActive(false);
+                if (!PlayerBehaviour.hasSuperJump)
+                {
+                    PlayerBehaviour.hasSuperJump = true;
+                    Debug.Log("Has super jump: " + PlayerBehaviour.hasSuperJump);
+                    itemIcon.SetActive(false);
+                }
+                else
+                {
+                    Debug.Log("Player already has super jump");
+                }
             }
+        }
+
+        // give super speed
+        private async void GiveSuperSpeed()
+        {
+            Debug.Log("Super speed enabled");
+            PlayerBehaviour.hasSuperSpeed = true;
+            PlayerBehaviour.currSpeedMultiplier = PlayerBehaviour.superSpeedMultiplier;
+            await Task.Delay(PlayerBehaviour.superSpeedDuration);
+            Debug.Log("Super speed disabled");
+            PlayerBehaviour.hasSuperSpeed = false;
+            PlayerBehaviour.currSpeedMultiplier = 1.0f;
         }
     }
 }
