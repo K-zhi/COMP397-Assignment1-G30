@@ -90,6 +90,23 @@ public class PlayerBehaviour : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
+    public void SavePlayer()
+    {
+        Debug.Log("postion: "+transform.position);
+        SaveSystem.SavePlayer(this);
+    }
+
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+        Vector3 position;
+        position.x = data.playerPosition[0];
+        position.y = data.playerPosition[1];
+        position.z = data.playerPosition[2];
+        transform.position = position;
+        Debug.Log("loaded positon" + position);
+    }
+
     public void loadCurrentMovementOptions()
     {
 

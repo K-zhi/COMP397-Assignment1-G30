@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class InventorySystem : MonoBehaviour
 {
+    /**
     public static bool inventory = true;
     public GameObject inventorySys;
     public Transform panel;
@@ -47,4 +48,5 @@ public class InventorySystem : MonoBehaviour
             Cursor.visible = false;
         }
     }
+    */
 }

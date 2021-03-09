@@ -49,6 +49,8 @@ public class PlayerCollision : MonoBehaviour
     private GameObject chipSlot2;
     private GameObject chipSlot3;
 
+    public PlayerBehaviour player;
+
 
     public void setHealth(int newHealth)
     {
