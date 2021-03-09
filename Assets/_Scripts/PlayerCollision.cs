@@ -249,15 +249,31 @@ public class PlayerCollision : MonoBehaviour
 
     public void SavePlayer()
     {
-        SaveSystem.SavePlayer(this);
+        SaveSystem.SavePlayer(this, GameObject.Find("Jammo_Player").GetComponent<PlayerBehaviour>());
         Debug.Log("Saved");
     }
     public void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadPlayer();
 
+        // load health
         health = data.health;
         UpdateHealth();
+
+        // load position
+        Vector3 position = new Vector3(data.playerPosition[0], data.playerPosition[1], data.playerPosition[2]);
+        Debug.Log(data.playerPosition[0] + " " + data.playerPosition[1] + " " + data.playerPosition[2]);
+        GameObject player = GameObject.Find("Jammo_Player");
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = position;
+        player.GetComponent<CharacterController>().enabled = true;
+
+        // load item history
+        GameObject.Find("BatteryImage").GetComponent<Image>().enabled = data.collectedBattery;
+        GameObject.Find("ChipImage").GetComponent<Image>().enabled = data.collectedChip;
+
+
+
         Debug.Log("Loaded");
     }
 }
