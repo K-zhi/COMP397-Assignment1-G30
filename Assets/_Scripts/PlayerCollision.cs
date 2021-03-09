@@ -254,7 +254,11 @@ public class PlayerCollision : MonoBehaviour
         Debug.Log("Saved");
         SaveSystem.SaveItems(GameObject.Find("Items"));
         SaveSystem.SaveEnemies(GameObject.Find("Enemies"));
+        GameObject.Find("Canvas").gameObject.transform.GetChild(2).gameObject.SetActive(true);
+        // Debug.Log("ItemParent activeSelf: " + GameObject.Find("ItemParent").activeSelf);
+        // Debug.Log("ItemParent name: " + GameObject.Find("ItemParent").name);
         SaveSystem.SaveInventory(GameObject.Find("ItemParent"));
+        GameObject.Find("Canvas").gameObject.transform.GetChild(2).gameObject.SetActive(false);
     }
     public void LoadPlayer()
     {
@@ -300,7 +304,9 @@ public class PlayerCollision : MonoBehaviour
         // load inventory states
         InventoryData inventoryData = SaveSystem.LoadInventory();
 
+        GameObject.Find("Canvas").gameObject.transform.GetChild(2).gameObject.SetActive(true);
         GameObject itemParent = GameObject.Find("ItemParent");
+        GameObject.Find("Canvas").gameObject.transform.GetChild(2).gameObject.SetActive(false);
         for (int i = 0; i < itemParent.gameObject.transform.childCount; i++)
         {
             if (inventoryData.inventoryStates[i] == true)
