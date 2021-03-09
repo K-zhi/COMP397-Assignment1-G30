@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 548749043}
   - component: {fileID: 548749046}
   - component: {fileID: 548749045}
-  - component: {fileID: 548749044}
   - component: {fileID: 406130634}
   m_Layer: 7
   m_Name: WeaknessCollider
@@ -83,19 +82,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &548749044
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548749042}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.35
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &406130634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -104,7 +90,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548749042}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.3, y: 0.1, z: 2.3}
@@ -303,7 +289,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4409866491529092}
-  - component: {fileID: 2103447517}
   - component: {fileID: 2103447518}
   m_Layer: 7
   m_Name: Body
@@ -327,20 +312,6 @@ Transform:
   m_Father: {fileID: 4023215848608658}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &2103447517
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1463649340635624}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  m_Radius: 0.6
-  m_Height: 1
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &2103447518
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -352,7 +323,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1, y: 1.1, z: 1.1}
+  m_Size: {x: 1.1, y: 1.1, z: 1.3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1503310629534036
 GameObject:
@@ -576,7 +547,7 @@ MeshCollider:
   m_GameObject: {fileID: 1919012471076396}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: -1
@@ -606,8 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0654fad1d3428ea4fb98c42569a24472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navMeshAgent: {fileID: 0}
-  player: {fileID: 0}
+  isDead: 0
 --- !u!195 &204157572
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -622,11 +592,11 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.5
+  m_StoppingDistance: 1.3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

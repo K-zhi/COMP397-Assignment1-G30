@@ -9,7 +9,7 @@ public class ItemData
     public bool[] itemStates;
     public ItemData(GameObject items)
     {
-        bool[] itemStates = new bool[items.gameObject.transform.childCount];
+        itemStates = new bool[items.gameObject.transform.childCount];
         for (int i = 0; i < items.gameObject.transform.childCount; i++)
         {
             itemStates[i] = items.gameObject.transform.GetChild(i).gameObject.activeSelf;

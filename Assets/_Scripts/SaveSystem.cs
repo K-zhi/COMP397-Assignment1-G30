@@ -25,6 +25,17 @@ public static class SaveSystem
         stream.Close();
     }
 
+    public static void SaveEnemies(GameObject enemies)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/enemies.gd";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        EnemyData data = new EnemyData(enemies);
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
     public static PlayerData LoadPlayer()
     {
         string path = Application.persistentDataPath + "/player.gd";
@@ -53,6 +64,26 @@ public static class SaveSystem
             FileStream stream = new FileStream(path, FileMode.Open);
 
             ItemData data = formatter.Deserialize(stream) as ItemData;
+            stream.Close();
+
+            return data;
+        }
+        else
+        {
+            Debug.LogError("Save file not found in " + path);
+            return null;
+        }
+    }
+
+    public static EnemyData LoadEnemies()
+    {
+        string path = Application.persistentDataPath + "/enemies.gd";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            EnemyData data = formatter.Deserialize(stream) as EnemyData;
             stream.Close();
 
             return data;

@@ -253,6 +253,7 @@ public class PlayerCollision : MonoBehaviour
         SaveSystem.SavePlayer(this, GameObject.Find("Jammo_Player").GetComponent<PlayerBehaviour>());
         Debug.Log("Saved");
         SaveSystem.SaveItems(GameObject.Find("Items"));
+        SaveSystem.SaveEnemies(GameObject.Find("Enemies"));
     }
     public void LoadPlayer()
     {
@@ -274,13 +275,25 @@ public class PlayerCollision : MonoBehaviour
         GameObject.Find("BatteryImage").GetComponent<Image>().enabled = data.collectedBattery;
         GameObject.Find("ChipImage").GetComponent<Image>().enabled = data.collectedChip;
 
+        // load item states
         ItemData itemData = SaveSystem.LoadItems();
 
-        // load item states
         GameObject items = GameObject.Find("Items");
         for (int i = 0; i < items.gameObject.transform.childCount; i++)
         {
             items.gameObject.transform.GetChild(i).gameObject.SetActive(itemData.itemStates[i]);
+        }
+
+        // load enemy states
+        EnemyData enemyData = SaveSystem.LoadEnemies();
+        
+        GameObject enemies = GameObject.Find("Enemies");
+        for (int i = 0; i < enemies.gameObject.transform.childCount; i++)
+        {
+            if (enemyData.enemyStates[i] == true)
+            {
+                enemies.gameObject.transform.GetChild(i).gameObject.GetComponent<SlimeBehaviour>().SetDead();
+            }
         }
 
         Debug.Log("Loaded");
