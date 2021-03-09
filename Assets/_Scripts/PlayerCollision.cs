@@ -192,7 +192,10 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Satellite"))
         {
             Debug.Log("Collided with satellie");
-            Victory();
+            if (GameObject.Find("BatteryImage").GetComponent<Image>().IsActive() && GameObject.Find("ChipImage").GetComponent<Image>().IsActive())
+            {
+                Victory();
+            }
         }
     }
 
