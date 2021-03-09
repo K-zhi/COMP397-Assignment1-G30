@@ -132,8 +132,8 @@ public class PlayerCollision : MonoBehaviour
             GameObject.Find("ChipImage").GetComponent<Image>().enabled = true;
             audio.clip = itemGet;
             audio.Play();
-            // To Do: enable chip collected icon in UI
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
+            // Destroy(other.gameObject);
             Debug.Log("Collided with chip");
 
             // add chip to inventory
@@ -152,8 +152,8 @@ public class PlayerCollision : MonoBehaviour
             GameObject.Find("BatteryImage").GetComponent<Image>().enabled = true;
             audio.clip = itemGet;
             audio.Play();
-            // To Do: enable battery collected icon in UI
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
+            // Destroy(other.gameObject);
             Debug.Log("Collided with battery");
 
             // add battery to inventory
@@ -171,7 +171,8 @@ public class PlayerCollision : MonoBehaviour
         {
             audio.clip = itemGet;
             audio.Play();
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
+            // Destroy(other.gameObject);
             Debug.Log("Collided with heart");
 
             if (heartSlot1 == null)
@@ -251,6 +252,7 @@ public class PlayerCollision : MonoBehaviour
     {
         SaveSystem.SavePlayer(this, GameObject.Find("Jammo_Player").GetComponent<PlayerBehaviour>());
         Debug.Log("Saved");
+        SaveSystem.SaveItems(GameObject.Find("Items"));
     }
     public void LoadPlayer()
     {
@@ -272,7 +274,14 @@ public class PlayerCollision : MonoBehaviour
         GameObject.Find("BatteryImage").GetComponent<Image>().enabled = data.collectedBattery;
         GameObject.Find("ChipImage").GetComponent<Image>().enabled = data.collectedChip;
 
+        ItemData itemData = SaveSystem.LoadItems();
 
+        // load item states
+        GameObject items = GameObject.Find("Items");
+        for (int i = 0; i < items.gameObject.transform.childCount; i++)
+        {
+            items.gameObject.transform.GetChild(i).gameObject.SetActive(itemData.itemStates[i]);
+        }
 
         Debug.Log("Loaded");
     }

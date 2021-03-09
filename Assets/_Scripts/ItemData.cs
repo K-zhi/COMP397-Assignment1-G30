@@ -6,27 +6,13 @@ using UnityEngine.UI;
 [System.Serializable]
 public class ItemData
 {
-    public int health;
-    public bool chipState;
-    public bool batteryState;
-    public bool enemyState;
-    public float[] playerPosition;
-    public bool collectedBattery;
-    public bool collectedChip;
-
-    public ItemData(ItemBehaviour itemBehaviour)
+    public bool[] itemStates;
+    public ItemData(GameObject items)
     {
-        /*
-        // health
-        health = player.getHealth();
-        // position
-        playerPosition = new float[3];
-        playerPosition[0] = playerBehaviour.transform.position.x;
-        playerPosition[1] = playerBehaviour.transform.position.y;
-        playerPosition[2] = playerBehaviour.transform.position.z;
-        // item history
-        collectedBattery = GameObject.Find("BatteryImage").GetComponent<Image>().enabled;
-        collectedChip = GameObject.Find("ChipImage").GetComponent<Image>().enabled;
-        */
+        bool[] itemStates = new bool[items.gameObject.transform.childCount];
+        for (int i = 0; i < items.gameObject.transform.childCount; i++)
+        {
+            itemStates[i] = items.gameObject.transform.GetChild(i).gameObject.activeSelf;
+        }
     }
 }
