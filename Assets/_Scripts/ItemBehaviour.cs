@@ -8,6 +8,10 @@ using UnityEngine.UI;
 
 public class ItemBehaviour : MonoBehaviour
 {
+    private void Start()
+    {
+        this.gameObject.transform.GetChild(0).GetChild(0).transform.gameObject.SetActive(false);
+    }
     public void useInventoryItem()
     {
         Transform itemSlot = transform;
